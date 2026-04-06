@@ -1,6 +1,7 @@
 py_library(
     name = "hello",
     srcs = ["hello.py"],
+    imports = ["apps/hello"],
     visibility = ["//visibility:public"],
 )
 

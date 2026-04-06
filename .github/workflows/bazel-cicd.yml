@@ -12,9 +12,9 @@ jobs:
 
       - name: Install Bazel
         run: |
-          curl -Lo /usr/local/bin/bazel \
+          sudo curl -Lo /usr/local/bin/bazel \
             https://github.com/bazelbuild/bazelisk/releases/latest/download/bazelisk-linux-amd64
-          chmod +x /usr/local/bin/bazel
+          sudo chmod +x /usr/local/bin/bazel
 
       - name: Build
         run: bazel build //apps/hello:hello
