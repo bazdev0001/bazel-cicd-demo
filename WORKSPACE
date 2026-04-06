@@ -9,6 +9,18 @@ http_archive(
     urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/5.8.4/rules_nodejs-5.8.4.tar.gz"],
 )
 
+load("@build_bazel_rules_nodejs//:repositories.bzl", "rules_nodejs_dependencies")
+rules_nodejs_dependencies()
+
+load("@build_bazel_rules_nodejs//:index.bzl", "node_repositories", "npm_install")
+node_repositories()
+
+npm_install(
+    name = "npm",
+    package_json = "//apps/api:package.json",
+    package_lock_json = "//apps/api:package-lock.json",
+)
+
 # Docker rules
 http_archive(
     name = "io_bazel_rules_docker",
