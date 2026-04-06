@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh run:*)",
+      "Bash(curl -sL https://github.com/bazelbuild/rules_nodejs/releases/tag/5.8.4)",
+      "Bash(curl -sL https://github.com/bazelbuild/rules_docker/releases/tag/v0.25.0)",
+      "Bash(python3 -c \"import sys, re; content = sys.stdin.read\\(\\); matches = re.findall\\(r''''sha256\\\\s*=\\\\s*[\"\"&quot;]*\\([a-f0-9]{64}\\)[\"\"&quot;]*'''', content\\); print\\(''''\\\\n''''.join\\(set\\(matches\\)\\)\\)\")"
+    ]
+  }
+}
