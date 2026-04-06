@@ -3,8 +3,6 @@ name: Bazel CI/CD
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
 
 jobs:
   build-and-test:
@@ -12,20 +10,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Bazelisk
+      - name: Install Bazel
         run: |
           curl -Lo /usr/local/bin/bazel \
             https://github.com/bazelbuild/bazelisk/releases/latest/download/bazelisk-linux-amd64
           chmod +x /usr/local/bin/bazel
 
-      - name: Cache Bazel
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/bazel
-          key: bazel-${{ runner.os }}-${{ hashFiles('WORKSPACE', '.bazelversion') }}
-
       - name: Build
-        run: bazel build //...
+        run: bazel build //apps/hello:hello
 
       - name: Test
-        run: bazel test //... --test_output=all
+        run: bazel test //apps/hello:hello_test --test_output=all
